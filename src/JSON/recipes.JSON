@@ -1,0 +1,11 @@
+{ "recipe_book": 
+    { "recipes":
+        { "pain au levain":
+            [{ "flour": 0.55}, 
+             { "water": 0.30},
+             { "starter": 0.05},
+             { "salt": 0.01}
+            ]
+        }
+    }
+}
