@@ -9,5 +9,6 @@ Bundler.require(:default)
 
 $prompt = TTY::Prompt.new
 
-
+welcome
+main_menu
 

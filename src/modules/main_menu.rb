@@ -1,3 +1,4 @@
+require_relative "./RecipeBook.rb"
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
@@ -16,7 +17,8 @@ def main_menu
     mm_choice = $prompt.select("Please select an option", menu)
     case mm_choice
     when 1
-      recipe_book
+        rl_choice = $prompt.select("Select a recipe", recipe_list)
+        select_recipe(rl_choice)
     when 2
       add_recipe
     when 3

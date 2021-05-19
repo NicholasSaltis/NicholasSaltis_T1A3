@@ -1,5 +1,12 @@
 { "recipes":
-    { "pain au levain":
+    {   "pain au levain":
+        [ 
+          { "flour": 0.55}, 
+          { "water": 0.30},
+          { "starter": 0.05},
+          { "salt": 0.01}
+        ],
+        "pain au ratan":
         [ 
           { "flour": 0.55}, 
           { "water": 0.30},
