@@ -9,4 +9,5 @@ Bundler.require(:default)
 
 $prompt = TTY::Prompt.new
 
-$prompt.select("choose:", %w(Nick Jack Ben))
+
+

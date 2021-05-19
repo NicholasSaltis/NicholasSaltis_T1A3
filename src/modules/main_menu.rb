@@ -13,7 +13,22 @@ def main_menu
             { name: "Display Help information", value: 4},
             { name: "Exit", value: 5}
            ]
-    $prompt.select("Please select an option", menu)
+    mm_choice = $prompt.select("Please select an option", menu)
+    case mm_choice
+    when 1
+      recipe_book
+    when 2
+      add_recipe
+    when 3
+      edit_recipe
+    when 4
+      help
+    when 5      
+      exit
+    else
+
+    end
 
 end
+
 
