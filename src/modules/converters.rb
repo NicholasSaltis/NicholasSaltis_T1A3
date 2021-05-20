@@ -1,8 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
+require 'tty-prompt'
 Bundler.require(:default)
-
-def welcome
-   puts "Welcome to my app"
-end
+$prompt = TTY::Prompt.new
