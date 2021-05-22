@@ -39,9 +39,9 @@ def main_menu(mm_choice)
                       puts "#{x}: #{y}%"
                     end
                   end
-                  
-                  conversion_options
-                  system "clear"
+                  while conversion_options(i) != 3
+                    conversion_options(i)
+                  end
                 end
               end
             end 
