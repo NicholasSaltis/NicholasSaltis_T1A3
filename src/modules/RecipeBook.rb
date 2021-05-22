@@ -10,6 +10,7 @@ class RecipeBook
 #   attr_reader :@recipe_name, :@recipe_ingredients
 @@list_of_recipes = []
 @@recipe_list_choice = 0
+
   def initialize(recipe)
     @@list_of_recipes << recipe
   end
@@ -39,18 +40,4 @@ class RecipeBook
 # end of RecipeBook class
 end
 
-# reads recipe.json file and returns a ruby hash
-def read_json
-  recipes_json = File.read('JSON/recipes.json')
-  recipe_hash = JSON.parse(recipes_json)
-  return recipe_hash
-end
-  # initialises each recipe from the recipes.json file via read_json method
-def load_recipes
-  recipes = read_json
-  recipes[:recipes].each do | recipe_name, recipe_ingredients |
-    recipe = {recipe_name: recipe_ingredients}
-    recipe_name = RecipeBook.new(recipe)
-  end
-end
 

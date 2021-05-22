@@ -1,5 +1,6 @@
 require_relative "./RecipeBook.rb"
 require_relative "./converters.rb"
+require_relative "./new_recipe.rb"
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
@@ -48,7 +49,7 @@ def main_menu(mm_choice)
         end
         
     when 2
-      add_recipe
+      new_recipe
     when 3
       edit_recipe
     when 4

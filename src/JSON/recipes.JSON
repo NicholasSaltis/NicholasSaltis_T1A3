@@ -1,17 +1,1 @@
-{ "recipes":
-    {   "pain au levain":
-        [ 
-          { "flour": 0.55}, 
-          { "water": 0.30},
-          { "starter": 0.05},
-          { "salt": 0.01}
-        ],
-        "pain au ratan":
-        [ 
-          { "flour": 0.55}, 
-          { "water": 0.30},
-          { "starter": 0.05},
-          { "salt": 0.01}
-        ]
-    }
-}
+{"recipes":{"pain au levain":[{"flour":0.5},{"water":0.35},{"starter":0.15},{"salt":0.1}],"croissant":[{"flour":0.4},{"water":0.25},{"butter":0.3}]}}
