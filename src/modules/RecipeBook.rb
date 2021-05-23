@@ -7,12 +7,18 @@ Bundler.require(:default)
 $prompt = TTY::Prompt.new
 
 class RecipeBook
-#   attr_reader :@recipe_name, :@recipe_ingredients
-@@list_of_recipes = []
-@@recipe_list_choice = 0
+  attr_reader :recipe_name, :recipe_ingredients
+  @@list_of_recipes = []
+  @@recipe_list_choice = 0
+  @@instances = []
 
   def initialize(recipe)
     @@list_of_recipes << recipe
+    @@instances << self
+    recipe_name = recipe.keys
+    recipe_ingredients = recipe.values
+    @recipe_name = recipe_name[0]
+    @recipe_ingredients = recipe_ingredients[0]
   end
 # displays list of recipe names that have been instansiated as a tty-prompt with an extra return to main menu option. updates class variable of most recent choice.
   def self.recipe_list
@@ -28,7 +34,7 @@ class RecipeBook
     @@recipe_list_choice = rl_choice
     return rl_choice
   end
-
+  
 #class variable getters
   def self.recipe_list_choice
     @@recipe_list_choice
@@ -36,6 +42,10 @@ class RecipeBook
 
   def self.list_of_recipes
     @@list_of_recipes
+  end
+
+  def self.all_recipe_instances
+    @@instances.inspect
   end
 # end of RecipeBook class
 end

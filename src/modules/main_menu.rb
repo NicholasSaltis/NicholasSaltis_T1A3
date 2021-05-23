@@ -50,8 +50,11 @@ def main_menu(mm_choice)
         
     when 2
       new_recipe
+      main_menu(main_menu_prompt)
     when 3
-      edit_recipe
+    # edit_recipe
+      puts RecipeBook.all_recipe_instances
+      
     when 4
       help
     when 5      

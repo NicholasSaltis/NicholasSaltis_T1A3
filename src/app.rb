@@ -25,8 +25,14 @@ def load_recipes(recipes)
   end
 end
 
+def line_break
+  puts "              !!                "
+  puts "<------------------------------>"
+  puts "              !!                "
+end
+
 
 load_recipes(read_json)
 welcome
 main_menu(main_menu_prompt)
-
+puts RecipeBook.all_recipe_instances

@@ -23,6 +23,8 @@ def new_recipe
   end
 #   new_recipe_hash = {recipe_name => recipe_ingredients}
 #   puts new_recipe_hash
+  instance_hash = {recipe_name => recipe_ingredients}
+  RecipeBook.new(instance_hash)
   recipe_json = read_json
   recipe_json["recipes"][recipe_name] = recipe_ingredients
   File.write("JSON/recipes.json", JSON.dump(recipe_json))
