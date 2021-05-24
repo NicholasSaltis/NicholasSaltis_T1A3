@@ -1,3 +1,19 @@
+def gets_new_ingredient_pair
+  puts "Please enter a new ingredient name"
+  new_ingredient_name = gets.chomp.to_s
+  puts "Please enter a new decimal number between 0 and 1 to represent the ingredient's percentage of  the whole recipe"
+  new_percentage = gets.chomp.to_f
+  new_ingredient_pair = {new_ingredient_name=>new_percentage}
+  return new_ingredient_pair
+end
+
+def add_ingredient(r,i)
+  new_ingredient_pair = gets_new_ingredient_pair
+  i << new_ingredient_pair
+end
+
+def delete_ingredient
+
 def edit_ingredient(r,i)
   puts "#{r}"
   ingredient_select_options = []
@@ -7,11 +23,7 @@ def edit_ingredient(r,i)
     end
   end
   ingredient_select = $prompt.select("select an ingredient to re-enter", ingredient_select_options)
-  puts "Please enter a new ingredient name"
-  new_ingredient_name = gets.chomp.to_s
-  puts "Please enter a new decimal number between 0 and 1 to represent the ingredient's percentage of the whole recipe"
-  new_percentage = gets.chomp.to_f
-  new_ingredient_pair = {new_ingredient_name=>new_percentage}
+  new_ingredient_pair = gets_new_ingredient_pair
   i.each_with_index do |ingredient_pair,index|
     ingredient_pair.each do |ing,p|
       if ingredient_select == ing 
@@ -43,23 +55,22 @@ def delete_recipe(r,i)
 end
 end
 
-
-
-
-
 def edit_recipe_options(r,i)
     edit_options = [
-                     {name: "select an ingredient to re-enter", value: 1},
-                     {name: "Delete Recipe", value: 2},
-                     {name: "back to menu select", value: 3}
+                     {name: "Add a new ingredient to the recipe", value: 1},
+                     {name: "select an ingredient to re-enter", value: 2},
+                     {name: "Delete Recipe", value: 3},
+                     {name: "back to recipe select", value: 4}
                    ]  
     recipe_edit_options = $prompt.select("What would you like to do with this recipe", edit_options)
     case recipe_edit_options
     when 1
-      edit_ingredient(r,i)
+      add_ingredient(r,i)
     when 2
-      delete_recipe(r,i)
+      edit_ingredient(r,i)
     when 3
+      delete_recipe(r,i)
+    when 4
       system "clear"
       main_menu(3)
     end
@@ -81,7 +92,7 @@ def edit_recipe
                     puts "#{x}: #{y}%"
                 end
               end
-              while edit_recipe_options(r,i) != 3
+              while edit_recipe_options(r,i) != 4
                 edit_recipe_options(r,i)
               end
             end
