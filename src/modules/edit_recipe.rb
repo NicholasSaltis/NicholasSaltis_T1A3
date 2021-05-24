@@ -81,27 +81,39 @@ def edit_recipe_options(r,i)
     recipe_edit_options = $prompt.select("What would you like to do with this recipe", edit_options)
     case recipe_edit_options
     when 1
+      clear
+      edit_recipe_ascii
       add_ingredient(r,i)
     when 2
+      clear
+      edit_recipe_ascii
       edit_ingredient(r,i)
     when 3 
+      clear
+      edit_recipe_ascii
       delete_ingredient(r,i)
     when 4
+      clear
+      edit_recipe_ascii
       delete_recipe(r,i)
       system "clear"
       main_menu(3)
     when 5
-      system "clear"
+      clear
       main_menu(3)
     end
 end
   
 def edit_recipe
+    clear
+    edit_recipe_ascii
     puts "please select a recipe to edit"
     if RecipeBook.recipe_list == 1
       system "clear"
       main_menu(main_menu_prompt)
     else
+      clear
+      edit_recipe_ascii
       parse_recipes = RecipeBook.list_of_recipes
         parse_recipes.each do |recipe|
             recipe.each do | r,i | 

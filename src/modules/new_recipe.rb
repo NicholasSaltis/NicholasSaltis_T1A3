@@ -9,6 +9,8 @@ def add_recipe_options
 end
 
 def new_recipe
+  clear
+  add_recipe_ascii
   puts "What is the recipe's name?"
   recipe_name = gets.chomp.to_s
   recipe_ingredients = []

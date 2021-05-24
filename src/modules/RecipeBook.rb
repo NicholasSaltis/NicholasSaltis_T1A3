@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 require 'json'
 require 'tty-prompt'
+require 'artii'
+require 'colorize'
 require_relative ("./converters.rb")
 Bundler.require(:default)
 $prompt = TTY::Prompt.new
@@ -22,6 +24,9 @@ class RecipeBook
   end
 # displays list of recipe names that have been instansiated as a tty-prompt with an extra return to main menu option. updates class variable of most recent choice.
   def self.recipe_list
+    system "clear"
+    title = Artii::Base.new :font => 'doom'
+    print title.asciify("Recipe  Book").colorize(:green)
     recipe_list_options = []
     @@list_of_recipes.each do |recipe|
       recipe.each do | r,i |

@@ -27,12 +27,13 @@ def main_menu(mm_choice)
     case mm_choice
     when 1
         if RecipeBook.recipe_list == 1
-            system "clear"
-            welcome
+            clear
             main_menu(main_menu_prompt)
         
         else
             # puts RecipeBook.recipe_list_choice
+            clear
+            conversions_ascii
             parse_recipes = RecipeBook.list_of_recipes
             parse_recipes.each do |recipe|
               recipe.each do | r,i | 
@@ -63,6 +64,7 @@ def main_menu(mm_choice)
       help
     when 5      
       convert_array_of_hashes(RecipeBook.list_of_recipes)
+      clear
       exit
       
     else

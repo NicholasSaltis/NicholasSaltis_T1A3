@@ -53,6 +53,7 @@ DEPENDENCIES
   rspec
   tty-box
   tty-prompt
+  tty-screen
 
 BUNDLED WITH
    2.2.16
