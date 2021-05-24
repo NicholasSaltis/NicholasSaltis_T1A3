@@ -38,5 +38,4 @@ end
 
 
 load_recipes(read_json)
-welcome
 main_menu(main_menu_prompt)

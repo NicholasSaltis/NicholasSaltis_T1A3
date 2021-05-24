@@ -10,6 +10,7 @@ Bundler.require(:default)
 
 $prompt = TTY::Prompt.new
 def main_menu_prompt
+  welcome
     menu = [
         { name: "View list of Recipes", value: 1},
         { name: "Input a new recipe into the recipe book", value: 2},
@@ -27,6 +28,7 @@ def main_menu(mm_choice)
     when 1
         if RecipeBook.recipe_list == 1
             system "clear"
+            welcome
             main_menu(main_menu_prompt)
         
         else
