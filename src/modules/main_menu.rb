@@ -21,7 +21,7 @@ return mm_choice
 end
 
 def main_menu(mm_choice)
-    
+    # takes main_menu_prompt output and uses it for a case statement to run selected method/s 
     case mm_choice
     when 1
         if RecipeBook.recipe_list == 1
@@ -49,16 +49,19 @@ def main_menu(mm_choice)
         end
         
     when 2
+    # add a new recipe to the recipe book
       new_recipe
       main_menu(main_menu_prompt)
     when 3
     # edit_recipe
-      puts RecipeBook.all_recipe_instances
-      
+      edit_recipe
+      main_menu(main_menu_prompt)
     when 4
       help
     when 5      
+      convert_array_of_hashes(RecipeBook.list_of_recipes)
       exit
+      
     else
 
     end
@@ -68,6 +71,17 @@ end
 def return_to_recipe_list
   system "clear"
   main_menu(1)
+end
+
+def convert_array_of_hashes(array_of_hashes)
+  new_recipes_hash = {}
+    array_of_hashes.each do |to_merge|
+      to_merge.each do |r,i|
+        new_recipes_hash[r] = i
+      end
+    end
+  json_edit = {"recipes"=>new_recipes_hash}
+  File.write("JSON/recipes.json", JSON.dump(json_edit))
 end
 
 

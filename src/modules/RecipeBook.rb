@@ -47,6 +47,16 @@ class RecipeBook
   def self.all_recipe_instances
     @@instances.inspect
   end
+
+  def self.delete_recipe(recipe_name_to_delete)
+    @@list_of_recipes.each_with_index do |recipe,index|
+      recipe.each do |r,i|
+        if r == recipe_name_to_delete
+          @@list_of_recipes.delete_at(index)
+        end
+      end
+    end
+  end
 # end of RecipeBook class
 end
 

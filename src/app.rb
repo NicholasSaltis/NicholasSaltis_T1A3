@@ -3,6 +3,7 @@ require_relative "./modules/Welcome.rb"
 require_relative "./modules/main_menu.rb"
 require_relative "./modules/converters.rb"
 require_relative "./modules/new_recipe.rb"
+require_relative "./modules/edit_recipe.rb"
 require "tty-prompt"
 require 'rubygems'
 require 'bundler/setup'

@@ -1,1 +1,1 @@
-{"recipes":{"pain au levain":[{"flour":0.5},{"water":0.35},{"starter":0.15},{"salt":0.1}],"croissant":[{"flour":0.4},{"water":0.25},{"butter":0.3}],"donut":[{"flour":0.6},{"water":0.4}],"choco":[{"flour":0.5},{"chocolate":0.2}],"damper":[{"flour":0.6},{"water":0.35},{"salt":0.05}],"test1":[{"ingred1":0.5},{"ingredi2":0.5}],"test2":[{"ingrenient1":0.0},{"ingredient2":0.5}]}}
+{"recipes":{"pain au levain":[{"flour":0.5},{"water":0.3},{"salt":0.01}]}}

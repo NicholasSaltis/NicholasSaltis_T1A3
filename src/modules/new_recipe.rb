@@ -29,3 +29,5 @@ def new_recipe
   recipe_json["recipes"][recipe_name] = recipe_ingredients
   File.write("JSON/recipes.json", JSON.dump(recipe_json))
 end
+
+
