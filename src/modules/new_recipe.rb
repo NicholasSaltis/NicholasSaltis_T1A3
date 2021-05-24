@@ -13,12 +13,14 @@ def new_recipe
   recipe_name = gets.chomp.to_s
   recipe_ingredients = []
   while add_recipe_options == 1
-    puts "enter ingredient"
-    ingredient_name = gets.chomp.to_s
-    puts "Enter a number between 0 and 1 that represents the" 
-    puts "ingredient's percentage of the whole. (eg. 0.5 = 50%, 0.22 = 22%)"
-    ingredient_percentage = gets.chomp.to_f;
-    ingredient_pair = {ingredient_name => ingredient_percentage}
+    system "clear"
+    puts recipe_name
+    recipe_ingredients.each do |pair|
+      pair.each do |i,p|
+        puts "#{i}: #{p}"
+      end
+    end
+    ingredient_pair = gets_new_ingredient_pair
     recipe_ingredients << ingredient_pair
   end
 #   new_recipe_hash = {recipe_name => recipe_ingredients}

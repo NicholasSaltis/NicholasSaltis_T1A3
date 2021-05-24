@@ -25,15 +25,18 @@ def load_recipes(recipes)
     recipe_name = RecipeBook.new(recipe)
   end
 end
-
+# for testing clarity
 def line_break
   puts "              !!                "
   puts "<------------------------------>"
   puts "              !!                "
 end
 
+def clear
+  system "clear"
+end
+
 
 load_recipes(read_json)
 welcome
 main_menu(main_menu_prompt)
-puts RecipeBook.all_recipe_instances

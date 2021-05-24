@@ -1,6 +1,7 @@
 require_relative "./RecipeBook.rb"
 require_relative "./converters.rb"
 require_relative "./new_recipe.rb"
+require_relative "./help.rb"
 require 'rubygems'
 require 'bundler/setup'
 require 'json'

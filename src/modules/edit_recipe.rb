@@ -1,10 +1,22 @@
 def gets_new_ingredient_pair
   puts "Please enter a new ingredient name"
   new_ingredient_name = gets.chomp.to_s
-  puts "Please enter a new decimal number between 0 and 1 to represent the ingredient's percentage of  the whole recipe"
+  puts "Enter a number between 0 and 1 that represents the" 
+  puts "ingredient's percentage of the whole. (eg. 0.5 = 50%, 0.22 = 22%)"
   new_percentage = gets.chomp.to_f
   new_ingredient_pair = {new_ingredient_name=>new_percentage}
   return new_ingredient_pair
+end
+
+def prompt_list_of_ingredients(r,i)
+  puts "#{r}"
+  ingredient_select_options = []
+  i.each do |ingredient_pair|
+    ingredient_pair.each do |i,p|
+      ingredient_select_options << {name: "#{i}: #{p}", value: i}
+    end
+  end
+  ingredient_select = $prompt.select("select an ingredient to re-enter", ingredient_select_options)
 end
 
 def add_ingredient(r,i)
@@ -12,17 +24,20 @@ def add_ingredient(r,i)
   i << new_ingredient_pair
 end
 
-def delete_ingredient
-
-def edit_ingredient(r,i)
-  puts "#{r}"
-  ingredient_select_options = []
-  i.each do |ingredient_pair|
-    ingredient_pair.each do |i,p|
-        ingredient_select_options << {name: "#{i}: #{p}", value: i}
+def delete_ingredient(r,i)
+  delete_choice = prompt_list_of_ingredients(r,i)
+  i.each_with_index do |ingredient_pair,index|
+    ingredient_pair.each do |ing,p|
+      if delete_choice == ing 
+        i.delete_at(index)
+      end
     end
   end
-  ingredient_select = $prompt.select("select an ingredient to re-enter", ingredient_select_options)
+end
+
+
+def edit_ingredient(r,i)
+  ingredient_select = prompt_list_of_ingredients(r,i)
   new_ingredient_pair = gets_new_ingredient_pair
   i.each_with_index do |ingredient_pair,index|
     ingredient_pair.each do |ing,p|
@@ -59,8 +74,9 @@ def edit_recipe_options(r,i)
     edit_options = [
                      {name: "Add a new ingredient to the recipe", value: 1},
                      {name: "select an ingredient to re-enter", value: 2},
-                     {name: "Delete Recipe", value: 3},
-                     {name: "back to recipe select", value: 4}
+                     {name: "select an ingredient to Delete", value: 3},
+                     {name: "Delete Recipe", value: 4},
+                     {name: "back to recipe select", value: 5}
                    ]  
     recipe_edit_options = $prompt.select("What would you like to do with this recipe", edit_options)
     case recipe_edit_options
@@ -68,9 +84,13 @@ def edit_recipe_options(r,i)
       add_ingredient(r,i)
     when 2
       edit_ingredient(r,i)
-    when 3
-      delete_recipe(r,i)
+    when 3 
+      delete_ingredient(r,i)
     when 4
+      delete_recipe(r,i)
+      system "clear"
+      main_menu(3)
+    when 5
       system "clear"
       main_menu(3)
     end
@@ -92,7 +112,7 @@ def edit_recipe
                     puts "#{x}: #{y}%"
                 end
               end
-              while edit_recipe_options(r,i) != 4
+              while edit_recipe_options(r,i) != 5
                 edit_recipe_options(r,i)
               end
             end
