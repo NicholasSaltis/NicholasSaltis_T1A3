@@ -20,16 +20,24 @@ def read_json
 end
 # initialises each recipe from the recipes.json file via read_json method
 def load_recipes(recipes)
-  recipes["recipes"].each do | recipe_name,recipe_ingredients |
-    recipe = {"#{recipe_name}" => recipe_ingredients}
-    recipe_name = RecipeBook.new(recipe)
+  if recipes["recipes"].empty? 
+    placeholder_recipe = {"Placeholder"=>[{"flour"=>0.5}]}
+    RecipeBook.new(placeholder_recipe)
+  else
+    recipes["recipes"].each do | recipe_name,recipe_ingredients |
+      recipe = {"#{recipe_name}" => recipe_ingredients}
+      recipe_name = RecipeBook.new(recipe)
+    end
   end
 end
 # for testing clarity
 def line_break
-  puts "              !!                "
-  puts "<------------------------------>"
-  puts "              !!                "
+  width = (TTY::Screen.width)-2
+  puts "<#{"-"*width}>"
+end
+
+def space
+  puts ""
 end
 
 def clear

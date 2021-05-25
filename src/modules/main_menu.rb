@@ -33,7 +33,7 @@ def main_menu(mm_choice)
         else
             # puts RecipeBook.recipe_list_choice
             clear
-            conversions_ascii
+            ascii_heading("Conversions")
             parse_recipes = RecipeBook.list_of_recipes
             parse_recipes.each do |recipe|
               recipe.each do | r,i | 
@@ -41,7 +41,7 @@ def main_menu(mm_choice)
                   puts "#{r}"
                   i.each do |value|
                     value.each do | x,y |
-                      puts "#{x}: #{y}%"
+                      puts "#{x}: #{y*100}%"
                     end
                   end
                   while conversion_options(i) != 3

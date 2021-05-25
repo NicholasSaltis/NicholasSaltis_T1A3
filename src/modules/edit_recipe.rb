@@ -1,3 +1,5 @@
+require_relative './Welcome.rb'
+
 def gets_new_ingredient_pair
   puts "Please enter a new ingredient name"
   new_ingredient_name = gets.chomp.to_s
@@ -106,14 +108,14 @@ end
   
 def edit_recipe
     clear
-    edit_recipe_ascii
+    ascii_heading("Edit  Recipe")
     puts "please select a recipe to edit"
     if RecipeBook.recipe_list == 1
       system "clear"
       main_menu(main_menu_prompt)
     else
       clear
-      edit_recipe_ascii
+      ascii_heading("Edit  Recipe")
       parse_recipes = RecipeBook.list_of_recipes
         parse_recipes.each do |recipe|
             recipe.each do | r,i | 

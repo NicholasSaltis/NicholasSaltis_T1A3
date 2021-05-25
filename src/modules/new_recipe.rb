@@ -10,7 +10,7 @@ end
 
 def new_recipe
   clear
-  add_recipe_ascii
+  ascii_heading("Add  Recipe")
   puts "What is the recipe's name?"
   recipe_name = gets.chomp.to_s
   recipe_ingredients = []
