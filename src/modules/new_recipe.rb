@@ -8,11 +8,24 @@ def add_recipe_options
   choice = $prompt.select("What would you like to do?", prompt_options)
 end
 
+def validate_word_input
+  valid_input = false
+  until valid_input
+    user_input = gets.chomp
+    if user_input.to_i > 0 || user_input.kind_of?(Array) || user_input.kind_of?(Hash) || user_input.length > 50
+      puts "Invalid input, please input a word less than 50 characters"
+    else
+      valid_input = true
+      return user_input
+    end
+  end
+end
+
 def new_recipe
   clear
   ascii_heading("Add  Recipe")
   puts "What is the recipe's name?"
-  recipe_name = gets.chomp.to_s
+  recipe_name = validate_word_input
   recipe_ingredients = []
   while add_recipe_options == 1
     system "clear"

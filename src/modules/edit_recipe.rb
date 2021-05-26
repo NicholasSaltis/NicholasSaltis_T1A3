@@ -2,9 +2,7 @@ require_relative './Welcome.rb'
 
 def gets_new_ingredient_pair
   puts "Please enter a new ingredient name"
-  new_ingredient_name = gets.chomp.to_s
-#   puts "Enter a number between 0 and 1 that represents the" 
-#   puts "ingredient's percentage of the whole. (eg. 0.5 = 50%, 0.22 = 22%)"
+  new_ingredient_name = validate_word_input
   new_percentage = $prompt.ask("Enter a number between 0 and 1 that represents theingredient's percentage of the whole. (eg. 0.5 = 50%, 0.22 = 22%)") { |q| q.in("0.000001-1.0") }
   new_ingredient_pair = {new_ingredient_name=>new_percentage.to_f}
   return new_ingredient_pair
