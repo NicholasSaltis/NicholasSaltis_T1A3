@@ -1,3 +1,4 @@
+# tty-prompt options to display after text displayed from main help options choice.
 def second_help_options
   second_help_options = [
                           {name: "Select another topic", value: 1},
@@ -6,15 +7,16 @@ def second_help_options
   second_help_options_selection = $prompt.select("What would you like to next?", second_help_options)
   case second_help_options_selection
   when 1
-    main_menu(4)
+    main_menu(4) # shortcuts to help section
   when 2
-    main_menu(main_menu_prompt)
+    main_menu(main_menu_prompt) # returns to main menu.
   end
 end
-
+# case statment for selection of tty-prompt options output. displays text formatted in a box using tty-box and with an ascii title (artii) then calls second_help_options
 def help
   clear
   ascii_heading("Help")
+  # options for menu
   help_options = [
                    {name: "Recipe Book", value: 1},
                    {name: "Conversions", value: 2},
@@ -24,10 +26,12 @@ def help
                    {name: "Return to Main Menu", value: 6},
                  ]  
   help_options_choice = $prompt.select("Please select a topic you would like to know more about", help_options)
+  # case statement using choice.
   case help_options_choice
   when 1
     clear
     ascii_heading("Help")
+    # tty-box string format can only have one string passed so new line characters used. screen width dynamic using tty-screen.
     help_frame = TTY::Box.frame( width: TTY::Screen.width,
                                  padding: 1,
                                  top: 8,
@@ -92,6 +96,6 @@ def help
     second_help_options
   when 6
     clear
-    main_menu(main_menu_prompt)
+    main_menu(main_menu_prompt) # return to main menu.
   end
 end

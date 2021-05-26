@@ -9,6 +9,7 @@ require "tty-prompt"
 Bundler.require(:default)
 
 $prompt = TTY::Prompt.new
+# seperate method for tty-prompt options and outputs selection result.
 def main_menu_prompt
   welcome
     menu = [
@@ -26,7 +27,7 @@ def main_menu(mm_choice)
     # takes main_menu_prompt output and uses it for a case statement to run selected method/s 
     case mm_choice
     when 1
-        if RecipeBook.recipe_list == 1
+        if RecipeBook.recipe_list == 1 # returns to main menu
             clear
             main_menu(main_menu_prompt)
         
@@ -37,14 +38,14 @@ def main_menu(mm_choice)
             parse_recipes = RecipeBook.list_of_recipes
             parse_recipes.each do |recipe|
               recipe.each do | r,i | 
-                if r == RecipeBook.recipe_list_choice.to_s
+                if r == RecipeBook.recipe_list_choice.to_s # matches recipe choice from RecipeBook.list_of_recipes and compares it to each recipe in recipe array. then formats matching values
                   puts "#{r}"
                   i.each do |value|
                     value.each do | x,y |
                       puts "#{x}: #{y*100}%"
                     end
                   end
-                  while conversion_options(i) != 3
+                  while conversion_options(i) != 3 # presents convesion options underneath printed recipe passing ingredients array as an argument.
                     conversion_options(i)
                   end
                 end
@@ -61,8 +62,10 @@ def main_menu(mm_choice)
       edit_recipe
       main_menu(main_menu_prompt)
     when 4
+      # help section
       help
-    when 5      
+    when 5 
+      # writes to json file then exits the app.      
       convert_array_of_hashes(RecipeBook.list_of_recipes)
       clear
       exit
@@ -72,12 +75,12 @@ def main_menu(mm_choice)
     end
 
 end
-
+# return to recipe book function.
 def return_to_recipe_list
   system "clear"
   main_menu(1)
 end
-
+# method takes an array of hashes and converts it to json format to be written.
 def convert_array_of_hashes(array_of_hashes)
   new_recipes_hash = {}
     array_of_hashes.each do |to_merge|
