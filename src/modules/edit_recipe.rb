@@ -1,5 +1,5 @@
 require_relative './Welcome.rb'
-
+# prompt user for a new ingredient percentage value pair
 def gets_new_ingredient_pair
   puts "Please enter a new ingredient name"
   new_ingredient_name = validate_word_input

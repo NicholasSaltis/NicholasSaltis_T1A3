@@ -7,6 +7,7 @@ require_relative "./RecipeBook.rb"
 Bundler.require(:default)
 $prompt = TTY::Prompt.new
 
+# validates user input integer by looping and checking if it is of the Integer class and greater than 0 which works to both prevent negative numbers and to filter strings that have be coerced to integers (which always = 0)
 def get_user_integer
   valid_input = false
   input = 0
@@ -28,20 +29,22 @@ end
 # iterates over hash first printing recipe name, then ingredient name and quantity in grams by multiplying total weight by the float value provided by hash.
 def convert_by_flour_weight(ingredients)
   puts "Please input a number for the amount of grams of flour to be used"
-  input = get_user_integer
+  input = get_user_integer # validates integer for use in formula
   total_weight = 0
   flour = 0.0
+  # parses ingredients array for a hash containing flour and uses its value. flour in recipe check is handled by conversion option selection method.
   ingredients.each do |parse_ingredients|
     if parse_ingredients.key?("flour")
       flour = parse_ingredients["flour"]
     end
   end
+  # divides flour weight by its percentage (represented as a decimal) to find total weight of recipe and uses that value to find values of other ingredients in grams from percentage value. 
   total = input / flour
   ascii_heading("Conversions")
   ingredients.each do | ingredient |
     ingredient.each do | i,p |
-      puts "#{i}: #{(total*p).to_i}grams"
-      total_weight += (total*p).to_i
+      puts "#{i}: #{(total*p).to_i}grams" # iterator formats recipe list and handles value conversion.
+      total_weight += (total*p).to_i # updates total weight with each iteration to print total eight
     end
   end
   puts "Total Recipe weight = #{total_weight} grams"
@@ -55,12 +58,13 @@ def convert_by_total_weight(ingredients)
   ascii_heading("Conversions")
   ingredients.each do | ingredient |
     ingredient.each do | i,p |
-        puts "#{i}: #{(input*p).to_i} grams"
+        puts "#{i}: #{(input*p).to_i} grams" # iterator formats and calculates input for output.
     end
   end
   puts "Total Recipe weight = #{input} grams"
 end
 
+# passes selected recipe ingredients onto conversion methods and tty-prompt select which opotion to choose using case.
 def conversion_options(ingredients)
   recipe_options = [ 
                     { name: "Convert recipe from flour weight", value: 1},
@@ -70,15 +74,18 @@ def conversion_options(ingredients)
 conversion_options = $prompt.select("What would you like to do with this recipe", recipe_options)
   case conversion_options
   when 1
+    # parses ingredients to check if flour is an ingredient and updates flour_in_recipe if true
   flour_in_recipe = false
   ingredients.each do |parse_ingredients|
     if parse_ingredients.key?("flour")
       flour_in_recipe = true
     end
   end
+  # if flour is in recipe moves on to flour weight conversion
   if flour_in_recipe
     convert_by_flour_weight(ingredients)
   else
+    # if flour is not in recipe it gives two tty-prompt options to either return to main menu to choose new recipe or edit. or to convert by flour weight instead
     no_flour_options = [
                          {name: "Return to main menu to select different recipe or edit this one", value: 1},
                          {name: "Convert recipe from total weight instead", value: 2}
@@ -91,10 +98,11 @@ conversion_options = $prompt.select("What would you like to do with this recipe"
       convert_by_total_weight(ingredients)
     end
   end
-  
+  # passes ingredients hash onto convert by total weight method.
   when 2
   convert_by_total_weight(ingredients)
   when 3
+  # calls main_menu with argument for display recipe book option
   return_to_recipe_list
   end
 end
