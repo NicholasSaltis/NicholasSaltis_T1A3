@@ -16,10 +16,11 @@ def new_recipe
   recipe_ingredients = []
   while add_recipe_options == 1
     system "clear"
+    ascii_heading("Add Recipe")
     puts recipe_name
     recipe_ingredients.each do |pair|
       pair.each do |i,p|
-        puts "#{i}: #{p}"
+        puts "#{i}: #{p*100}%"
       end
     end
     ingredient_pair = gets_new_ingredient_pair
