@@ -44,6 +44,28 @@ def clear
   system "clear"
 end
 
+arg = ARGV[0].strip.downcase if ARGV[0]
 
 load_recipes(read_json)
+
+if arg == "-h" || arg == "-help"
+  main_menu(4)  
+elsif arg == "-u" || arg == "-usage"
+  ascii_heading("Tutorial")
+  tutorial_frame = TTY::Box.frame( width: TTY::Screen.width,
+                               padding: 1,
+                               top: 8,
+                               height: 11,
+                               align: :left
+                              ) do
+  "Welcome to The Bakers Box. Use arrow keys up and down to navigate menus. Press enter to select a highlighted menu option. Use keys to enter numbers or text when prompted. Use last menu options to return to previous page. Keep choosing last option to return to main menu. To exit the app select the exit option from the main menu. for further help with the details of the app select the help option from the main menu"
+  end
+  print tutorial_frame
+  highlight = "Enter/Return".green
+  $prompt.keypress("Press #{highlight} key to begin using The Bakers Box", keys: [:return])
+
+elsif arg == "-r" || arg == "-recipes"
+  main_menu(1)
+end
+
 main_menu(main_menu_prompt)

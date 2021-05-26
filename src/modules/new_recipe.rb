@@ -11,7 +11,7 @@ end
 def validate_word_input
   valid_input = false
   until valid_input
-    user_input = gets.chomp
+    user_input = gets.downcase.chomp
     if user_input.to_i > 0 || user_input.kind_of?(Array) || user_input.kind_of?(Hash) || user_input.length > 50
       puts "Invalid input, please input a word less than 50 characters"
     else
