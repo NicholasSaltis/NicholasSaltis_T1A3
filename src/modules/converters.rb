@@ -30,8 +30,13 @@ def convert_by_flour_weight(ingredients)
   puts "Please input a number for the amount of grams of flour to be used"
   input = get_user_integer
   total_weight = 0
-  flour = ingredients[0]
-  total = input / flour["flour"]
+  flour = 0.0
+  ingredients.each do |parse_ingredients|
+    if parse_ingredients.key?("flour")
+      flour = parse_ingredients["flour"]
+    end
+  end
+  total = input / flour
   ascii_heading("Conversions")
   ingredients.each do | ingredient |
     ingredient.each do | i,p |
@@ -65,7 +70,28 @@ def conversion_options(ingredients)
 conversion_options = $prompt.select("What would you like to do with this recipe", recipe_options)
   case conversion_options
   when 1
-  convert_by_flour_weight(ingredients)
+  flour_in_recipe = false
+  ingredients.each do |parse_ingredients|
+    if parse_ingredients.key?("flour")
+      flour_in_recipe = true
+    end
+  end
+  if flour_in_recipe
+    convert_by_flour_weight(ingredients)
+  else
+    no_flour_options = [
+                         {name: "Return to main menu to select different recipe or edit this one", value: 1},
+                         {name: "Convert recipe from total weight instead", value: 2}
+                       ]
+    no_flour_choice = $prompt.select("This recipe does not contain flour, please choose what you would like to do instead", no_flour_options)
+    case no_flour_choice
+    when 1
+      main_menu(main_menu_prompt)
+    when 2
+      convert_by_total_weight(ingredients)
+    end
+  end
+  
   when 2
   convert_by_total_weight(ingredients)
   when 3
