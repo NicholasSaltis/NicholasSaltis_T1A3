@@ -75,7 +75,7 @@ elsif arg == "-u" || arg == "-usage"
                                height: 11,
                                align: :left
                               ) do
-  "Welcome to The Bakers Box. Use arrow keys up and down to navigate menus. Press enter to select a highlighted menu option. Use keys to enter numbers or text when prompted. Use last menu options to return to previous page. Keep choosing last option to return to main menu. To exit the app select the exit option from the main menu. for further help with the details of the app select the help option from the main menu"
+  "Welcome to The Bakers Box.  for further help with the details of the app select the help option from the main menu"
   end
   print tutorial_frame
   # tty-prompt keypress functionality to hold the tutorial screen before progressing onto main menu
