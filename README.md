@@ -32,13 +32,13 @@ Once correctly installed to a computer, ideally a laptop so that it could be use
 
   The first and main screen of the app. It features a simple ASCII title and welcome message greet the user and menu with navigation options for the app. It serves as the home page for the app with all other features returning back to the main menu. The menu is navigatable using the TTY-prompt gem and the up and down arrow keys with enter/return being used to select an option.
 
-![BakerBoxmainmenu](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/BakerBoxmainmenu.png)
+![BakerBoxmainmenu](./docs/BakerBoxmainmenu.png)
 
 * ##### Recipe Book:
 
   The recipe book displays the names of all recipes that are loaded into the app. Recipe names are dynamically added to the options for a tty-prompt select menu allowing the user to select the name of the recipe itself and for the options to update within the same session if recipes are added or deleted. It also has a back to main menu option for simple navigation.
 
-![RecipeBook](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/RecipeBook.png)
+![RecipeBook](./docs/RecipeBook.png)
 
 * ##### Conversions:
 
@@ -58,25 +58,25 @@ Once correctly installed to a computer, ideally a laptop so that it could be use
 
   The app will loop in the conversion step until the user selects return back to recipe book.
 
-![Conversion_options](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Conversion_options.png)
+![Conversion_options](./docs/Conversion_options.png)
 
 * ##### Add recipe:
 
   The user can input a new recipe to be stored in the JSON file and added to the recipe book, all within the same session. The user is prompted to enter a name for the recipe which is validated by a method which ensures that it isnt too long (>50 characters) and isnt a data type that would disrupt the program. If it is an unwanted input the user is prompted to reenter the input correctly. The user can then select to add an ingredient to ingredient which calls a method that captures and validates user input for an ingredient name and value that represents a percentage of 100% in decimal format. Eg, 0.5 = 50%. That ingredient value pair is added to an array and the user is prompted again to either add an ingredient or finish and save recipe. The app loops over this add ingredient function until the user finishes and saves at which point the recipe name and ingredient array and initialized within the RecipeBook class to be used elsewhere within the app.
 
-![Add_recipe](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Add_recipe.png)
+![Add_recipe](./docs/Add_recipe.png)
 
 * ##### Edit Recipe:
 
   The user can select an existing recipe to edit with the options to either add or delete an ingredient, do both at once and select an ingredient to replace with a new input and Delete recipe. The user can also select to return to the main menu. Add/Replace ingredient options access the ingredients array and modify it accordingly with those changes persisting. The delete recipe option calls the list of recipes stored within the RecipeBook class and removes the selected recipe. All changes made are saved by formatting and writting to the JSON file on app close.
 
-![Edit_Recipe](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Edit_Recipe.png)
+![Edit_Recipe](./docs/Edit_Recipe.png)
 
 * ##### Help Section
 
   The Help option from the main menu brings the user to a menu selection for different features of the app. selecting a features prints a formatted text block with details or instructions relating to the feature. The user can then select to view a different help page or return to the main menu.
 
-![Help](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Help.png)
+![Help](./docs/Help.png)
 
 
 
@@ -94,7 +94,7 @@ User input occurs in the conversion section where the user is prompted to input 
 
 ##### FlowChart
 
-![The Bakers Box flowchart](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/The Bakers Box flowchart.png)
+![The Bakers Box flowchart](./docs/The_Bakers_Box_flowchart.png)
 
 ##### Project Management
 
@@ -102,7 +102,7 @@ User input occurs in the conversion section where the user is prompted to input 
 
 I used trello to manage this project. I made user story cards to keep track of the UX as i developed this app and then made made three cards for my three main features and had checklists with goals that needed to be completed. I then used 4 columns: Pending tasks, In Progress, Testing, Passed Tests and Implemeted. The goal was to pass cards from the pending tasks column through the various stages of development.
 
-![Trello_screenshot](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Trello_screenshot.png)
+![Trello_screenshot](./docs/Trello_screenshot.png)
 
 ##### Testing 
 
@@ -110,7 +110,7 @@ Link to [Manual Testing Sheet](https://docs.google.com/spreadsheets/d/1IjwCPN0_x
 
 Manual testing was used in the development of this app. I used a manual testing sheet for the loading of the recipes.json file, both conversion methods, flour in recipe detection for flour weight conversion and the validation of user inputs by rejecting unwanted values (both for names, and percentage values)
 
-![Google Sheets Manual Testing](/Users/nick/Documents/flextrack/assignments/NicholasSaltis_T1A3/docs/Google Sheets Manual Testing.png)
+![Google Sheets Manual Testing](./docs/Google_Sheets_Manual_Testing.png)
 
 ---
 
