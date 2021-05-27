@@ -2,4 +2,4 @@
 
 chmod +x ./run_app.sh
 bundle
-./run_app 
+./run_app.sh -u
